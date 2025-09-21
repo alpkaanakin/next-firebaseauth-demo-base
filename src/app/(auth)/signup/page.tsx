@@ -3,13 +3,14 @@ import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import { useState } from "react";
 import { app } from "@/lib/firebaseSdk";
 import { useRouter } from "next/navigation";
-import { createSession } from "../authActions";
+import { createSession, createUserDoc } from "../authActions";
 
 export default function Signup() {
 	const router = useRouter();
 	const auth = getAuth(app);
 	const [email, setEmail] = useState(""),
-		[password, setPassword] = useState("");
+		[password, setPassword] = useState(""),
+		[username, setUsername] = useState("");
 
 	async function handleSignup(e: React.FormEvent) {
 		e.preventDefault();
@@ -17,6 +18,7 @@ export default function Signup() {
 			const cred = await createUserWithEmailAndPassword(auth, email, password);
 			const token = await cred.user.getIdToken(true);
 			await createSession(token);
+			await createUserDoc(cred.user.uid, username, email);
 			router.push("/dashboard");
 		} catch (error) {
 			if (error instanceof Error) {
@@ -46,6 +48,18 @@ export default function Signup() {
 					/>
 				</div>
 				<div className="mb-5">
+					<label htmlFor="username" className="theme-label">
+						Username
+					</label>
+
+					<input
+						className="theme-input"
+						placeholder="username"
+						name="username"
+						onChange={(e) => setUsername(e.target.value)}
+					/>
+				</div>
+				<div className="mb-5">
 					<label htmlFor="password" className="theme-label">
 						Password
 					</label>
@@ -58,6 +72,7 @@ export default function Signup() {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</div>
+
 				<button type="submit" className="theme-btn mr-2">
 					Signup
 				</button>

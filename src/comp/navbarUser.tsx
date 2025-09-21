@@ -9,13 +9,13 @@ export default function NavbarUser() {
 				{/* Left links */}
 				<div className="flex gap-2">
 					<Link href="/" className="text-lg font-bold hover:underline p-2">
-						Home
+						Website
 					</Link>
 					<Link
 						href="/dashboard/products"
 						className="text-lg font-bold hover:underline p-2"
 					>
-						Products
+						Edit Products
 					</Link>
 					<Link
 						href="/pricing"
