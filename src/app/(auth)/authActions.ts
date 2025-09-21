@@ -44,8 +44,6 @@ export async function updateUsername(formData: FormData) {
 
 	// 3) Write to Firestore
 	await adminDb.collection("users").doc(uid).set({ username }, { merge: true });
-
-	return { success: true, username };
 }
 
 export async function createUserDoc(
