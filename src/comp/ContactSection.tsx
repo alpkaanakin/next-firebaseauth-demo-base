@@ -25,7 +25,7 @@ export function ContactSection() {
 						</span>
 					</h2>
 					<p className="text-xl text-gray-400 max-w-2xl mx-auto">
-						Ready to start your next project? Let's discuss how we can help
+						Ready to start your next project? Let&apos;s discuss how we can help
 						bring your vision to life.
 					</p>
 				</div>
