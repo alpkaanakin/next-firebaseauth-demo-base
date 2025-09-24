@@ -1,12 +1,12 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 
-export function Navigation() {
+export function Navigation({ email }: { email: string | null }) {
 	const navItems = [
-		{ name: "Home", href: "#home" },
+		{ name: "Home", href: "/" },
 		{ name: "About Us", href: "#about" },
 		{ name: "Services", href: "#services" },
 		{ name: "Contact", href: "#contact" },
-		{ name: "Signup", href: "/signup" },
 	];
 
 	return (
@@ -14,24 +14,42 @@ export function Navigation() {
 			<div className="max-w-7xl mx-auto px-6 lg:px-8">
 				<div className="flex items-center justify-between h-16">
 					{/* Logo */}
+
 					<div className="flex-shrink-0">
-						<h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
-							Softvia
-						</h1>
+						<Link href="/">
+							<h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
+								Softvia
+							</h1>
+						</Link>
 					</div>
 
 					{/* Navigation Links */}
 					<div className="hidden md:block">
 						<div className="ml-10 flex items-baseline space-x-8">
 							{navItems.map((item) => (
-								<a
+								<Link
 									key={item.name}
 									href={item.href}
-									className="text-gray-300 hover:text-white px-3 py-2 text-sm transition-colors duration-200 hover:bg-white/5 rounded-lg"
+									className="text-gray-300 hover:text-white px-3 py-2 text-md transition-colors duration-200 hover:bg-white/5 rounded-lg"
 								>
 									{item.name}
-								</a>
+								</Link>
 							))}
+							{email ? (
+								<a
+									href="/dashboard"
+									className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 text-md shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200 border-0 rounded-lg"
+								>
+									Dashboard
+								</a>
+							) : (
+								<a
+									href="/signup"
+									className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-4 py-2 text-md shadow-sm hover:shadow-md transform hover:scale-105 transition-all duration-200 border-0 rounded-lg"
+								>
+									Signup
+								</a>
+							)}
 						</div>
 					</div>
 

@@ -1,14 +1,12 @@
 import { AboutSection } from "@/comp/AboutSection";
 import { ContactSection } from "@/comp/ContactSection";
 import { HeroSection } from "@/comp/HeroSection";
-import { Navigation } from "@/comp/Navigation";
 import { ServicesSection } from "@/comp/ServicesSection";
 
 export default function Home() {
 	return (
 		<div className="min-h-screen bg-background text-foreground dark">
 			{/* Navigation */}
-			<Navigation />
 
 			{/* Main Content */}
 			<main>

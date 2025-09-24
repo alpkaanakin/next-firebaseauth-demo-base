@@ -2,7 +2,7 @@
 export const revalidate = 60; // optional
 export const runtime = "nodejs";
 
-import NavbarPublic from "@/comp/navbarPublic";
+import { Navigation } from "@/comp/Navigation";
 import { adminAuth } from "@/lib/firebaseAdmin";
 import { cookies } from "next/headers";
 
@@ -25,7 +25,7 @@ export default async function PublicLayout({
 
 	return (
 		<>
-			<NavbarPublic email={email} />
+			<Navigation email={email} />
 			{children}
 		</>
 	);
